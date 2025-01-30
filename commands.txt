@@ -1,0 +1,63 @@
+brew install mysql
+brew services start mysql
+brew services list 
+mysql -u root < commands.sql
+
+Upgrading from MySQL <8.4 to MySQL >9.0 requires running MySQL 8.4 first:
+ - brew services stop mysql
+ - brew install mysql@8.4
+ - brew services start mysql@8.4
+ - brew services stop mysql@8.4
+ - brew services start mysql
+
+
+---
+
+Create, Insert
+
+---
+
+
+Single Table Query:
+
+SELECT <col>
+FROM <table>
+WHERE <filter>
+ORDER BY <col> DESC
+GROUP BY <col>
+HAVING <expr>
+
+<filter>
+WHERE rating > 3;
+WHERE name != 'Berlin' AND name != 'Madrid';
+WHERE name LIKE 'P%' OR name LIKE '%s'; // startswith P or endswith s
+WHERE name LIKE '_ublin'; // dublin / lubin / etc
+WHERE population BETWEEN 1 AND 10; // in between
+WHERE rating IS NOT NULL;
+WHERE country_id IN (1, 4, 7, 8);
+
+---
+
+Multi Table Query:
+
+join = inner join
+left join = final table will have values from left table; null from right table for entries that dont match
+right join = final table will have values from right table; null from left table for entries that dont match
+full join = full outer join = left join + right join
+cross join = all possible combination of rows from both tables (FROM table1, table2, ...)
+natural join = cols with same name
+
+
+---
+
+aggregation fn:
+count(expr) - COUNT(DISTINCT country_id) - 
+min
+max
+avg
+sum
+
+
+---
+
+subquery
