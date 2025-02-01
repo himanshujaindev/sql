@@ -27,7 +27,7 @@ ORDER BY <col> DESC
 GROUP BY <col>
 HAVING <expr>
 
-<filter>
+<filter> - 7
 WHERE rating > 3;
 WHERE name != 'Berlin' AND name != 'Madrid';
 WHERE name LIKE 'P%' OR name LIKE '%s'; // startswith P or endswith s
@@ -61,3 +61,21 @@ sum
 ---
 
 subquery
+single value - subquery will return exactly one col and one row; used with comparison operators like: = < >
+multiple values - subquery will return mulitple col or multiple rows: used with operators like: IN EXISTS ALL ANY
+correlated - subquery refers to table mentioned in the outer query;
+
+
+---
+
+set operation
+- use to combine results of mulitple queries
+- all queries MUST return SAME # of COL and COMPATIBLE DATA TYPES
+- names of those col can be different
+
+UNION - no duplicate rows
+UNION ALL - duplicate rows
+INTERSECT - common rows
+EXCEPT / MINUS - return rows from first result set
+
+---

@@ -70,3 +70,23 @@ SELECT country_id, SUM(population)
 FROM city
 GROUP BY country_id
 HAVING SUM(population) > 3000000;
+
+
+SELECT name
+FROM country
+WHERE EXISTS (
+  SELECT *
+  FROM city
+  WHERE country_id = country.id
+);
+
+
+
+-- List the country with more than 1 city
+select name
+from country
+where id in (
+  select country_id
+  from city
+  group by country_id
+  HAVING count(country_id) > 1);
