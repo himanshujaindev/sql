@@ -1,0 +1,9 @@
+brew install cockroachdb/tap/cockroach
+
+lsof -i :8080
+kill -9 71149
+rm -rf /Users/himajai2/Documents/projects/sql/cockroachdb/cockroach-data
+cockroach start-single-node --insecure --advertise-addr=localhost --background
+
+cockroach node drain --insecure
+pkill -f cockroach

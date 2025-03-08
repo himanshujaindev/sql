@@ -1,6 +1,6 @@
 brew install mysql
 brew services start mysql
-brew services list 
+brew services list
 mysql -u root < commands.sql
 
 Upgrading from MySQL <8.4 to MySQL >9.0 requires running MySQL 8.4 first:

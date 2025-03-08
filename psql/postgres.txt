@@ -1,0 +1,6 @@
+brew install postgresql
+brew services start postgresql
+
+createdb mydb
+psql -l 
+psql -d mydb -f psql.sql
